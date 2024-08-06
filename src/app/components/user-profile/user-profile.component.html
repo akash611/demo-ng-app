@@ -1,1 +1,37 @@
-<p>user-profile works!</p>
+<h1>User Profile Component as child of App Component</h1>
+<p>Name: {{name}}, Status: {{status}}, Salary: {{salary}}</p>
+<button [disabled]="isBtnDisabled">Click Me</button>
+<h4>Input Value : {{inputval}}</h4>
+<!-- two way binding using property binding and Event Binding  -->
+<!-- <input type="text" placeholder="Enter Name" (input)="onChange($event)"> -->
+<!-- two way binding using ngModel -->
+<input type="text" [(ngModel)]="inputval"/>
+
+<!-- Loop and Conditions Using Control Syntaxes -->
+<div>
+    @for (user of users; track user.name) {
+        @if(user.salary>10000){
+        <h4>Name: {{user.name}}, Status: {{user.isSingle ? 'Single' : 'Married'}}, Salary: {{user.salary}}</h4>
+        }
+        @else{
+        <h4>Name: {{user.name}}, Status: {{user.isSingle ? 'Single' : 'Married'}}, Salary: Not Eligible</h4>
+        }
+    }
+</div>
+<hr/>
+<!-- Loop and Conditions Using Directives -->
+<div *ngFor="let user of users">
+    <h4 *ngIf="user.salary>10000; else elseblock" >Name: {{user.name}}, Status: {{user.isSingle ? 'Single' : 'Married'}}, Salary: {{user.salary}}</h4>
+    <ng-template #elseblock>
+        <h4>Name: {{user.name}}, Status: {{user.isSingle ? 'Single' : 'Married'}}, Salary: Not Eligible</h4>
+    </ng-template>
+</div>
+<hr/>
+<!-- Sendind data to child  -->
+<app-user-details userName="Mangesh" isSingle="true" salary="50000"></app-user-details>
+<app-user-details userName="Pritam" isSingle="false" salary="450000"></app-user-details>
+<app-user-details userName="Sudheer" isSingle="true" salary="550000"></app-user-details>
+<hr/>
+<!-- Sendind data to child  using ngFor directive-->
+<app-user-details *ngFor="let user of users" [userName]="user.name" [isSingle]="user.isSingle" [salary]="user.salary" (myEvent)="recievedData($event)"> 
+</app-user-details>

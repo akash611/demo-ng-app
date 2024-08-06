@@ -1,0 +1,4 @@
+<p> User Details as child of User profile</p>
+<h4>Name: {{name}}, Status: {{isSingle ? 'Single' : 'Married'}}, Salary: {{salary}}</h4>
+<input type="number" [(ngModel)]="newSalary" placeholder="Enter new salary" > 
+<button (click)="sendData()">Update Salary</button>
