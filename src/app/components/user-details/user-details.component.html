@@ -1,4 +1,5 @@
 <p> User Details as child of User profile</p>
-<h4>Name: {{name}}, Status: {{isSingle ? 'Single' : 'Married'}}, Salary: {{salary}}</h4>
-<input type="number" [(ngModel)]="newSalary" placeholder="Enter new salary" > 
+<h4  #myheading appHighlight >Name: {{name|uppercase}}, Status: {{isSingle ? 'Single' : 'Married'}}, Salary: {{ salary | currency:"INR"}}</h4>
+<!-- <input type="number" [(ngModel)]="newSalary" placeholder="Enter new salary" >  -->
+<input type="number" #salaryInput [value]="salary" placeholder="Enter new salary">
 <button (click)="sendData()">Update Salary</button>

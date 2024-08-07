@@ -1,5 +1,5 @@
 <h1>User Profile Component as child of App Component</h1>
-<p>Name: {{name}}, Status: {{status}}, Salary: {{salary}}</p>
+<h2>Name: {{name}}, Status: {{status}}, Salary: {{salary}}, Phone No: {{phoneNumber | countrycode}}</h2>
 <button [disabled]="isBtnDisabled">Click Me</button>
 <h4>Input Value : {{inputval}}</h4>
 <!-- two way binding using property binding and Event Binding  -->
@@ -28,10 +28,11 @@
 </div>
 <hr/>
 <!-- Sendind data to child  -->
-<app-user-details userName="Mangesh" isSingle="true" salary="50000"></app-user-details>
+<!-- <app-user-details userName="Mangesh" isSingle="true" salary="50000"></app-user-details>
 <app-user-details userName="Pritam" isSingle="false" salary="450000"></app-user-details>
 <app-user-details userName="Sudheer" isSingle="true" salary="550000"></app-user-details>
-<hr/>
+<hr/> -->
 <!-- Sendind data to child  using ngFor directive-->
 <app-user-details *ngFor="let user of users" [userName]="user.name" [isSingle]="user.isSingle" [salary]="user.salary" (myEvent)="recievedData($event)"> 
 </app-user-details>
+<button (click)="clear()"> clear users</button>
